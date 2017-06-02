@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/01 22:43:06 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/01 23:53:44 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define __FDF_H__
 
 #include <unistd.h>
+#include <stdio.h>
 #include "mlx.h"
 
 

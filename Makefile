@@ -6,13 +6,13 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/01 22:50:21 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/02 00:05:16 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
 
-CC		=	gcc -Wall -Wextra -Werror
+CC		=	cc
 
 SRCS	= 	mlx_main.c\
 
@@ -25,11 +25,11 @@ LIBS = -L libft/ -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
 all: $(NAME)
 
 $(OBJ):
-	$(CC) $(INCLUDE) -c $(SRCS)
+	@$(CC) $(INCLUDE) -c $(SRCS)
 
 $(NAME): $(OBJ)
 	@make all -C libft
-	$(CC) $(OBJ) $(LIBS) -g -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) -g -o $(NAME)
 
 clean:
 	@make clean -C libft
