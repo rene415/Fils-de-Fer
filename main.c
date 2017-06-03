@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_main.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/02 01:16:42 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/03 01:09:59 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,25 @@ int	my_key_function(int keycode, void *mlx)
 	return (0);
 }
 
+
 int main(void)
 {
-	void	*mlx;
-	void	*window;
-	int		x;
-	int 	y;
+	void		*mlx;
+	void		*window;
+	t_points	*points;
+	int 		y;
+	int			x;
 
+	//h = 7;
+	//w = 8;
+//	if (!(points = (t_points**)malloc(sizeof(t_points*) * (h+1))))
+//			return (0);
+	//points[h]= NULL;
+//	if (!(t_point*)malloc(sizeof(t_points) * (w + 1)))
+//		return (0);
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "mlx 42");
-	sleep(2);
+	//sleep(2);
 	y = 200;
 	while (y < 400)
 	{
@@ -37,13 +46,14 @@ int main(void)
 		{
 			mlx_pixel_put(mlx, window, (x), (y - 200), 0xF0FF00);
 			mlx_pixel_put(mlx, window, x, y, 0xF0000FF);
-			usleep(50);
+			//usleep(50);
 			x++;
 		}
 		y++;
 	}
+//	ft_image_read(void);
 	mlx_key_hook(window, my_key_function, mlx);
 	mlx_loop(mlx);
-	sleep(10);
+	//sleep(10);
 	return (0);
 }

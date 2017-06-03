@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/13 21:49:25 by rramirez          #+#    #+#             */
-/*   Updated: 2017/01/30 18:28:40 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/02/19 19:43:58 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr(char const *str)
 {
+	if (!str)
+		return ;
 	while (*str)
 	{
 		ft_putchar(*str);
