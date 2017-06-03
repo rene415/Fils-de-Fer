@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/03 02:01:03 by rramirez         ###   ########.fr       */
+/*   Created: 2017/06/03 01:51:46 by rramirez          #+#    #+#             */
+/*   Updated: 2017/06/03 02:03:16 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __FDF_H__
-#define __FDF_H__
+#include "fdf.h"
 
-#include <unistd.h>
-#include <stdio.h>
-#include "mlx.h"
-
-typedef struct	s_points
+void		read_file(void)
 {
-	int		x;
-	int		y;
-	int		z;
-}				t_points;
+	int 	fd;
+	int		*file;
+	t_fdf	pieces;
 
-typedef struct  s_fdf
-{
-	int		width;
-	int		height;
-	void	*mlx;
-	void	*points;
-}				t_fdf;
+	pieces = (t_fdf)malloc(sizeof(t_fdf))
 
-int				my_key_funtion(int keycode, void *mlx);
+	fd = open(argv[1], O_RDONLY);
+	if (get_next_line(fd, &file) = 1)
 
-#endif
+
+	
+}
