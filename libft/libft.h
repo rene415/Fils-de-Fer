@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 15:02:09 by rramirez          #+#    #+#             */
-/*   Updated: 2017/02/19 19:12:06 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/06 10:05:46 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <ctype.h>
-# include "get_next_line.h"
+//# include "get_next_line.h"
+
+# define BUFF_SIZE		100
 
 typedef struct		s_list
 {
@@ -92,4 +94,8 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int					get_next_line(const int fd, char **line);
+int 				get_next_line(const int	fd, char **line);
+char				*buff_read(char *buff_store, int fd);
+int					ft_len(char *buff_store, char c);
+int					store_to_line(char **buff_store, char **line);
 #endif

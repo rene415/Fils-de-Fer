@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/03 02:01:03 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/05 11:59:42 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,26 @@
 
 #include <unistd.h>
 #include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <math.h>
 #include "mlx.h"
+#include "libft/libft.h"
 
-typedef struct	s_points
+typedef struct		s_points
 {
 	int		x;
 	int		y;
 	int		z;
-}				t_points;
+}			t_points;
 
-typedef struct  s_fdf
+typedef struct		s_fdf
 {
 	int		width;
 	int		height;
-	void	*mlx;
-	void	*points;
-}				t_fdf;
+	void		*mlx;
+	void		*points;
+}			t_fdf;
 
 int				my_key_funtion(int keycode, void *mlx);
 
