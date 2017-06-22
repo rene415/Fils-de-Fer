@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/21 16:03:32 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/22 16:30:23 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ typedef struct		s_fdf
 {
 	int		width;
 	int		height;
-	void		*mlx;
-	void		*points;
+	int		**map;
 }			t_fdf;
 
 int				my_key_funtion(int keycode, void *mlx);
-void			save_file(char **argv);
+void			save_file(char **argv, t_fdf *size);
+int				ft_width(char **file);
+void			coordinates(int fd, t_fdf size);
 #endif

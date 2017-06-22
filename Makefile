@@ -6,7 +6,7 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/21 16:04:52 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/22 15:46:05 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(OBJ):
 
 $(NAME): $(OBJ)
 	@make all -C libft
-	@$(CC) $(OBJ) $(LIBS) -g -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS)  -o $(NAME)
 
 clean:
 	@make clean -C libft

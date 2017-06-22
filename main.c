@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/21 17:21:17 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/22 15:45:49 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ int	main(int argc, char **argv)
 //	int		fd;
 //	char 		*line;
 //	char		**file;
+	t_fdf		*size;
 
 	h = 7;
 	w = 8;
 
 	if (argc != 2)
 		return (0);
-	/*
 	if (!(points = (t_points*)malloc(sizeof(t_points) * (h + 1))))
 			return (0);
-	save_file(argv);
-	points[h]= NULL;
+	save_file(argv, size);
+	//points[h]= NULL;
 	if (!(t_points*)malloc(sizeof(t_points) * (w + 1)))
 		return (0);
-	*/	
+/*	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "42 pixels");
 	//sleep(2);
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 	while (y < 400)
 	{
 		x = 0;
-		while(x < 0)
+		while(x < 400)
 		{
 			mlx_pixel_put(mlx, window, (x), (y - 200), 0xF0FF00);
 			mlx_pixel_put(mlx, window, x, y, 0xF0000FF);
@@ -61,9 +61,9 @@ int	main(int argc, char **argv)
 		}
 		y++;
 	}
-//	ft_image_read(void);
 	mlx_key_hook(window, my_key_function, mlx);
 	mlx_loop(mlx);
 	//sleep(10);
+*/
 	return (0);
 }
