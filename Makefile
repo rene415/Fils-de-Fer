@@ -6,7 +6,7 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/02 15:02:57 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/21 16:04:52 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME	=	fdf
 CC		=	cc
 
 SRCS	= 	main.c\
+			save_file.c\
 
 OBJ 	=	${SRCS:.c=.o}
 

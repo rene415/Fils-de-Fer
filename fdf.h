@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/05 11:59:42 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/21 16:03:32 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ typedef struct		s_fdf
 }			t_fdf;
 
 int				my_key_funtion(int keycode, void *mlx);
-
+void			save_file(char **argv);
 #endif

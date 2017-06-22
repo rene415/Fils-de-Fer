@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_file.c                                        :+:      :+:    :+:   */
+/*   save_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/03 01:51:46 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/03 02:03:16 by rramirez         ###   ########.fr       */
+/*   Created: 2017/06/21 11:28:34 by rramirez          #+#    #+#             */
+/*   Updated: 2017/06/21 16:40:17 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		read_file(void)
+void		save_file(char **argv)
 {
+	int 	i;
 	int 	fd;
-	int		*file;
-	t_fdf	pieces;
+	char 	*line;
+	char	**file;
 
-	pieces = (t_fdf)malloc(sizeof(t_fdf))
-
-	fd = open(argv[1], O_RDONLY);
-	if (get_next_line(fd, &file) = 1)
-
-
-	
+	if ((fd = open(argv[1], O_RDONLY)) == -1)
+		exit(0);
+   	while(get_next_line(fd, &line))
+	{
+		i = 0;
+		printf("line is: %s\n", line);
+		file = ft_strsplit(line, ' ' );
+		while (file[i] != '\0')
+		{
+			printf("%s", file[i]);
+			i++;
+		}
+		printf("\n");
+	}
+	close (fd);
 }
