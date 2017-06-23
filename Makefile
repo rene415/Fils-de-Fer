@@ -6,13 +6,13 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/22 15:46:05 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/22 20:03:18 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	fdf
 
-CC		=	cc
+CC		=	gcc
 
 SRCS	= 	main.c\
 			save_file.c\
@@ -21,16 +21,17 @@ OBJ 	=	${SRCS:.c=.o}
 
 INCLUDE = -I fdf.h -I minilibx
 
-LIBS = -L libft/ -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L libft/ -lft 
+#-L minilibx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
 $(OBJ):
-	@$(CC) $(INCLUDE) -c $(SRCS)
+	@$(CC) $(INCLUDE) -c $(SRCS) -g
 
 $(NAME): $(OBJ)
 	@make all -C libft
-	@$(CC) $(OBJ) $(LIBS)  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 
 clean:
 	@make clean -C libft
