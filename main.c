@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/22 15:45:49 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 12:42:09 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,12 @@ int	main(int argc, char **argv)
 {
 	void		*mlx;
 	void		*window;
-	t_points	*points;
-	int 		y;
-	int			x;
-	int			h;
-	int			w;
-//	int		fd;
-//	char 		*line;
-//	char		**file;
 	t_fdf		*size;
 
-	h = 7;
-	w = 8;
-
+	size = (t_fdf *)malloc(sizeof(t_fdf));
 	if (argc != 2)
 		return (0);
-	if (!(points = (t_points*)malloc(sizeof(t_points) * (h + 1))))
-			return (0);
 	save_file(argv, size);
-	//points[h]= NULL;
-	if (!(t_points*)malloc(sizeof(t_points) * (w + 1)))
-		return (0);
 /*	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "42 pixels");

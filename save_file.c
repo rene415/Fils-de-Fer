@@ -6,12 +6,21 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 11:28:34 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/22 20:38:46 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 12:42:36 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+int		ft_width(char **file)
+{
+	int		i;
+
+	i = 0;	
+	while(file[i])
+		i++;
+	return (i);
+}
 void	coordinates(int fd, char **argv, t_fdf size)
 {
 	char 	**coord;
@@ -21,11 +30,13 @@ void	coordinates(int fd, char **argv, t_fdf size)
 
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit(0);
-	size.map = (int **)malloc(sizeof(int *) * (size.height));
+	if (!(size.map = (int **)malloc(sizeof(int *) * (size.height + 1))))
+			exit(0);
+	size.map[size.height] = NULL;
 	while (get_next_line(fd, &line))
 	{
 		i = 0;
-		size.map[x] = (int *)malloc(sizeof(int) * (size.width));
+		size.map[x] = (int *)malloc(sizeof(int) * (size.width + 1));
 		coord = ft_strsplit(line, ' ');
 		while (i < size.width)
 		{
@@ -35,20 +46,11 @@ void	coordinates(int fd, char **argv, t_fdf size)
 		}
 		free(coord);
 		free(line);
-		printf("\n");
+		//printf("\n");
 		x++;
 	}
 }
-
-int		ft_width(char **file)
-{
-	int		i;
-	while(file[i])
-		i++;
-	return (i);
-}
-
-void		save_file(char **argv, t_fdf * size)
+void		save_file(char **argv, t_fdf *size)
 {
 	int 	fd;
 	char 	*line;
@@ -62,10 +64,12 @@ void		save_file(char **argv, t_fdf * size)
 	{
 		y++;
 		file = ft_strsplit(line, ' ' );
+		size->width = ft_width(file);
+		free(file);
 		free(line);
 	}
-	size->width = ft_width(file);
-	//printf("width is %d\n", size->width);
+
+	printf("width is %d\n", size->width);
 	while (get_next_line(fd, &line))
 	{
 		y++;

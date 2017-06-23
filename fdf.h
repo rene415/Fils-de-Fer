@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 20:31:59 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/22 21:43:58 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 10:45:29 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,21 @@
 //#include "mlx.h"
 #include "libft/libft.h"
 
-typedef struct		s_points
+typedef struct		s_bio
 {
-	int		x;
-	int		y;
-	int		z;
-}			t_points;
+	int		x1;
+	int		x2;
+	int		y1;
+	int		y2;
+	int		gap;
+	int		big;
+	int 	rise;
+	int		run;
+	int		slope;
+	int 	max;
+	int		smax;
+
+}			t_bio;
 
 typedef struct		s_fdf
 {
@@ -39,4 +48,5 @@ int				my_key_funtion(int keycode, void *mlx);
 void			save_file(char **argv, t_fdf *size);
 int				ft_width(char **file);
 void			coordinates(int fd,char **argv,  t_fdf size);
+t_bio			make_env(t_fdf size);
 #endif

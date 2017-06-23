@@ -6,7 +6,7 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/22 20:03:18 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/23 10:30:56 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ CC		=	gcc
 
 SRCS	= 	main.c\
 			save_file.c\
+			make_env.c\
 
 OBJ 	=	${SRCS:.c=.o}
 
