@@ -6,21 +6,12 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 11:28:34 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 12:42:36 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 13:09:32 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int		ft_width(char **file)
-{
-	int		i;
-
-	i = 0;	
-	while(file[i])
-		i++;
-	return (i);
-}
 void	coordinates(int fd, char **argv, t_fdf size)
 {
 	char 	**coord;
@@ -41,7 +32,7 @@ void	coordinates(int fd, char **argv, t_fdf size)
 		while (i < size.width)
 		{
 			size.map[x][i] = ft_atoi(&coord[i][0]);
-			printf("%d", size.map[x][i]);
+			//printf("%d", size.map[x][i]);
 			i++;
 		}
 		free(coord);
@@ -56,27 +47,25 @@ void		save_file(char **argv, t_fdf *size)
 	char 	*line;
 	char	**file;
 	int 	y;
+	int 	i;
 
+	i = 0;
 	y = 0;
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit(0);
-   	if (get_next_line(fd, &line))
+   	while (get_next_line(fd, &line))
 	{
 		y++;
-		file = ft_strsplit(line, ' ' );
-		size->width = ft_width(file);
-		free(file);
+		file = ft_strsplit(line, ' ');
 		free(line);
 	}
-
-	printf("width is %d\n", size->width);
-	while (get_next_line(fd, &line))
-	{
-		y++;
-		free(line);
-	}
+	while (file[i])
+		i++;
+	size->width = i;
+	free(file);
 	size->height = y;
-//	printf("height is: %d\n", size->height);
+	//printf("width is: %d\n", size->width);
+	//printf("height is: %d\n", size->height);
 	close(fd);
 	coordinates(fd, argv, *size);
 	close (fd);

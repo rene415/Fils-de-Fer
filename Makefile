@@ -6,7 +6,7 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/23 10:30:56 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/23 14:32:06 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,7 @@ OBJ 	=	${SRCS:.c=.o}
 
 INCLUDE = -I fdf.h -I minilibx
 
-LIBS = -L libft/ -lft 
-#-L minilibx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L libft/ -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

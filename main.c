@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 12:42:09 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 14:29:10 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,15 @@ int	my_key_function(int keycode, void *mlx)
 
 int	main(int argc, char **argv)
 {
-	void		*mlx;
-	void		*window;
+	//void		*mlx;
+	//void		*window;
 	t_fdf		*size;
 
 	size = (t_fdf *)malloc(sizeof(t_fdf));
 	if (argc != 2)
 		return (0);
 	save_file(argv, size);
+	make_env(*size);
 /*	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "42 pixels");
