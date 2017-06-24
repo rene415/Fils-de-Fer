@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 18:30:24 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 19:59:32 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	save_file(argv, size);
-	//make_env(*size);
+	make_env(*size);
 /*	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "42 pixels");

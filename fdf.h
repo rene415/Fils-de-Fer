@@ -26,7 +26,7 @@ typedef	struct		s_cartp
 	double		x;
 	double		y;
 	double		z;
-	double		raw_z;
+	//double		raw_z;
 }			t_cartp;
 
 typedef struct		s_bio
@@ -44,14 +44,14 @@ typedef struct		s_bio
 	int		smax;
 	void		*mlx;
 	void		*window;
+	int		midx;
+	int		midy;
 }			t_bio;
 
 typedef struct		s_fdf
 {
 	int		zmax;
 	int		zmin;
-	int		midx;
-	int		midy;
 	int		width;
 	int		height;
 	int		**map;

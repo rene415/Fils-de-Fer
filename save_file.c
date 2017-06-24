@@ -32,6 +32,7 @@ void	coordinates(int fd, char **argv, t_fdf size)
 	int	i;
 	int	x;
 
+	x = 0;
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit(0);
 	if (!(size.map = (int **)malloc(sizeof(int *) * (size.height + 1))))
