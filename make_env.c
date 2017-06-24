@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/23 10:27:23 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 14:39:46 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 18:33:31 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_make_cart(t_bio **bio, t_fdf size)
 {
-	(*bio)->mlx = mlx_init();
-	(*bio)->window = mlx_new_window((*bio)->mlx, (*bio)->max, (*bio)->smax, "Fils De Fer");
-
+	//(*bio)->mlx = mlx_init();
+	//(*bio)->window = mlx_new_window((*bio)->mlx, (*bio)->max, (*bio)->smax, "Fils De Fer");
 }
 
 void	make_env(t_fdf size)
@@ -38,5 +37,5 @@ void	make_env(t_fdf size)
 	printf("max is = %i\n", bio->max);
 	bio->smax = (bio->max) - 300;
 	printf("smax is = %i\n", bio->smax);
-	ft_make_cart(&bio, size);
+	//ft_make_cart(&bio, size);
 }

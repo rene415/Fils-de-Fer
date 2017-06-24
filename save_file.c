@@ -6,18 +6,31 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/21 11:28:34 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 13:09:32 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/23 18:36:23 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+void	value_z(t_fdf *size, int x)
+{
+	int 	i;
+	
+	i = 0;
+	while (i < size->width)
+	{
+		size->zmax = size->map[x][i] > size->zmax ? size->map[x][i] : size->zmax;
+		size->zmin = size->map[x][i] < size->zmin ? size->map[x][i] : size->zmin;
+		i++;
+	}
+}
+
 void	coordinates(int fd, char **argv, t_fdf size)
 {
 	char 	**coord;
 	char 	*line;
-	int		i;
-	int		x;
+	int	i;
+	int	x;
 
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit(0);
@@ -38,6 +51,9 @@ void	coordinates(int fd, char **argv, t_fdf size)
 		free(coord);
 		free(line);
 		//printf("\n");
+		value_z(&size, x);
+		//printf("zmax is: %i\n", size.zmax);
+		//printf("zmin is: %i\n\n", size.zmin);
 		x++;
 	}
 }
