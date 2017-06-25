@@ -23,6 +23,7 @@ int	main(int argc, char **argv)
 {
 	//void		*mlx;
 	//void		*window;
+	t_bio  		*bio;
 	t_fdf		*size;
 
 	size = (t_fdf *)malloc(sizeof(t_fdf));
@@ -31,7 +32,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (0);
 	save_file(argv, size);
-	make_env(*size);
+	bio = make_env(*size);
+	draw_pieces(bio, *size);
 /*	
 	mlx = mlx_init();
 	window = mlx_new_window(mlx, 400, 400, "42 pixels");

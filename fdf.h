@@ -21,16 +21,25 @@
 //#include "mlx.h"
 #include "libft/libft.h"
 
+typedef	struct		s_values
+{
+	float		offset;
+	float		threshold;
+	float		delta;
+	float		adjust;
+}				t_values;
+
 typedef	struct		s_cartp
 {
-	double		x;
-	double		y;
-	double		z;
+	float		x;
+	float		y;
+	float		z;
 	//double		raw_z;
-}			t_cartp;
+}				t_cartp;
 
 typedef struct		s_bio
 {
+	int		k;
 	int		x1;
 	int		x2;
 	int		y1;
@@ -40,12 +49,13 @@ typedef struct		s_bio
 	int 		rise;
 	int		run;
 	int		slope;
-	int 		max;
-	int		smax;
+	float		max;
+	float		smax;
 	void		*mlx;
 	void		*window;
 	int		midx;
 	int		midy;
+	t_cartp		**cart;
 }			t_bio;
 
 typedef struct		s_fdf
@@ -57,9 +67,18 @@ typedef struct		s_fdf
 	int		**map;
 }			t_fdf;
 
-int			my_key_funtion(int keycode, void *mlx);
+int				my_key_funtion(int keycode, void *mlx);
 void			save_file(char **argv, t_fdf *size);
-void			coordinates(int fd,char **argv,  t_fdf size);
-void			make_env(t_fdf size);
-void			value_z(t_fdf *size, int x);
+void			coordinates(int fd,char **argv,  t_fdf **size);
+void			value_z(t_fdf **size, int x);
+t_bio			*make_env(t_fdf size);
+t_cartp			**ft_make_cart(t_bio **bio, t_fdf size);
+void			draw_pieces(t_bio *bio, t_fdf size);
+void			translate(t_bio **bio, t_fdf size);
+void			ft_values(t_fdf size, t_bio **bio, int i, int j);
+void			draw_right(t_fdf size, t_bio *bio, t_values **values);
+void			draw_down(t_fdf size, t_bio *bio, t_values **values);
+void			slope_slow(t_fdf size, t_bio **bio, t_values *values);
+void			slope_fast(t_fdf size, t_bio **bio, t_values *values);
+void			slope_flat(t_fdf size, t_bio **bio);
 #endif

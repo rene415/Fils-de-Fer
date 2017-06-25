@@ -12,20 +12,20 @@
 
 #include "fdf.h"
 
-void	value_z(t_fdf *size, int x)
+void	value_z(t_fdf **size, int x)
 {
 	int 	i;
 	
 	i = 0;
-	while (i < size->width)
+	while (i < (*size)->width)
 	{
-		size->zmax = size->map[x][i] > size->zmax ? size->map[x][i] : size->zmax;
-		size->zmin = size->map[x][i] < size->zmin ? size->map[x][i] : size->zmin;
+		(*size)->zmax = (*size)->map[x][i] > (*size)->zmax ? (*size)->map[x][i] : (*size)->zmax;
+		(*size)->zmin = (*size)->map[x][i] < (*size)->zmin ? (*size)->map[x][i] : (*size)->zmin;
 		i++;
 	}
 }
 
-void	coordinates(int fd, char **argv, t_fdf size)
+void	coordinates(int fd, char **argv, t_fdf **size)
 {
 	char 	**coord;
 	char 	*line;
@@ -35,26 +35,26 @@ void	coordinates(int fd, char **argv, t_fdf size)
 	x = 0;
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
 		exit(0);
-	if (!(size.map = (int **)malloc(sizeof(int *) * (size.height + 1))))
+	if (!((*size)->map = (int **)malloc(sizeof(int *) * ((*size)->height + 1))))
 			exit(0);
-	size.map[size.height] = NULL;
+	(*size)->map[(*size)->height] = NULL;
 	while (get_next_line(fd, &line))
 	{
 		i = 0;
-		size.map[x] = (int *)malloc(sizeof(int) * (size.width + 1));
+		(*size)->map[x] = (int *)malloc(sizeof(int) * ((*size)->width + 1));
 		coord = ft_strsplit(line, ' ');
-		while (i < size.width)
+		while (i < (*size)->width)
 		{
-			size.map[x][i] = ft_atoi(&coord[i][0]);
-			//printf("%d", size.map[x][i]);
+			(*size)->map[x][i] = ft_atoi(&coord[i][0]);
+			//printf("[%3d]", (*size)->map[x][i]);
 			i++;
 		}
 		free(coord);
 		free(line);
 		//printf("\n");
-		value_z(&size, x);
-		//printf("zmax is: %i\n", size.zmax);
-		//printf("zmin is: %i\n\n", size.zmin);
+		value_z(&(*size), x);
+		//printf("zmax is: %i\n", (*size)->zmax);
+		//printf("zmin is: %i\n\n", (*size)->zmin);
 		x++;
 	}
 }
@@ -84,6 +84,6 @@ void		save_file(char **argv, t_fdf *size)
 	//printf("width is: %d\n", size->width);
 	//printf("height is: %d\n", size->height);
 	close(fd);
-	coordinates(fd, argv, *size);
+	coordinates(fd, argv, &size);
 	close (fd);
 }
