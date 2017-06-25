@@ -59,7 +59,7 @@ t_bio	*make_env(t_fdf size)
 	bio->x2 = 0;
 	bio->y1 = 0;
 	bio->y2 = 0;
-	bio->gap = size.width > size.height ? 500/(size.width) : 500/(size.height);
+	bio->gap = size.width > size.height ? (size.win_x)/(size.width) : (size.win_y)/(size.height);
 	bio->big = size.width > size.height ? size.width : size.height;
 	bio->rise = 0;
 	bio->run = 0;
@@ -72,7 +72,7 @@ t_bio	*make_env(t_fdf size)
 	bio->smax = (bio->max) - 300;
 	//printf("smax is = %i\n", bio->smax);
 	bio->cart = ft_make_cart(&bio, size);
-	//bio->mlx = mlx_init();
-	//bio->window = mlx_new_window(bio->mlx, bio->max, bio->smax, "Fils De Fer");
+	bio->mlx = mlx_init();
+	bio->window = mlx_new_window(bio->mlx, bio->max, bio->smax, "Fils De Fer");
 	return (bio);
 }

@@ -18,8 +18,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <math.h>
-//#include "mlx.h"
+#include "minilibx/mlx.h"
 #include "libft/libft.h"
+#define	RED 0x000000ff
+#define WHITE 0x00ffffff
+#define ESC 53
 
 typedef	struct		s_values
 {
@@ -27,6 +30,7 @@ typedef	struct		s_values
 	float		threshold;
 	float		delta;
 	float		adjust;
+	float		range;
 }				t_values;
 
 typedef	struct		s_cartp
@@ -60,6 +64,8 @@ typedef struct		s_bio
 
 typedef struct		s_fdf
 {
+	int		win_x;
+	int		win_y;
 	int		zmax;
 	int		zmin;
 	int		width;
@@ -67,6 +73,7 @@ typedef struct		s_fdf
 	int		**map;
 }			t_fdf;
 
+void			file_check(t_fdf *size, int argc, char **argv);
 int				my_key_funtion(int keycode, void *mlx);
 void			save_file(char **argv, t_fdf *size);
 void			coordinates(int fd,char **argv,  t_fdf **size);
@@ -75,10 +82,10 @@ t_bio			*make_env(t_fdf size);
 t_cartp			**ft_make_cart(t_bio **bio, t_fdf size);
 void			draw_pieces(t_bio *bio, t_fdf size);
 void			translate(t_bio **bio, t_fdf size);
-void			ft_values(t_fdf size, t_bio **bio, int i, int j);
+void			ft_values(t_bio **bio, int i, int j);
 void			draw_right(t_fdf size, t_bio *bio, t_values **values);
 void			draw_down(t_fdf size, t_bio *bio, t_values **values);
-void			slope_slow(t_fdf size, t_bio **bio, t_values *values);
-void			slope_fast(t_fdf size, t_bio **bio, t_values *values);
-void			slope_flat(t_fdf size, t_bio **bio);
+void			slope_slow(t_bio **bio, t_values *values);
+void			slope_fast(t_bio **bio, t_values *values);
+void			slope_flat(t_bio **bio);
 #endif

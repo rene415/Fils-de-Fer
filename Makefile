@@ -20,13 +20,13 @@ SRCS	= 	main.c\
 			draw_pieces.c\
 			translate.c\
 			make_slope.c\
+			file_check.c\
 
 OBJ 	=	${SRCS:.c=.o}
 
 INCLUDE = -I fdf.h -I minilibx
 
-LIBS = -L libft/ -lft 
-#-L minilibx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L libft/ -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 

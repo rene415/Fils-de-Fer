@@ -28,6 +28,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+/* libft*/
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);
 int					ft_isalnum(int c);
@@ -81,10 +82,13 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
+/* bonus*/
 size_t				ft_letters(char const *s, char c);
 size_t				ft_int_len(int n);
 size_t				ft_word_count(const char *s, char c);
 int					ft_spaces(int str);
+void				ft_int_swap(int a, int b);
+void				ft_error_msg(char *str);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
@@ -93,6 +97,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
+/* get next line*/
 int					get_next_line(const int fd, char **line);
 int 				get_next_line(const int	fd, char **line);
 char				*buff_read(char *buff_store, int fd);

@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	ft_values(t_fdf size, t_bio **bio, int i, int j)
+void	ft_values(t_bio **bio, int i, int j)
 {
 	(*bio)->x1 = round((*bio)->cart[i][j].x);
 	(*bio)->y1 = round((*bio)->cart[i][j].y);
@@ -28,8 +28,8 @@ void	ft_values(t_fdf size, t_bio **bio, int i, int j)
 	}
 	(*bio)->rise = ((*bio)->y2) - ((*bio)->y1);
 	(*bio)->run = ((*bio)->x2) - ((*bio)->x1);
-	printf("pixel1: x1[%i]y1[%i]\n", (*bio)->x1, (*bio)->y1);
-	printf("pixel2: x2[%i]y2[%i]\n\n", (*bio)->x2, (*bio)->y2);
+	//printf("pixel1: x1[%i]y1[%i]\n", (*bio)->x1, (*bio)->y1);
+	//printf("pixel2: x2[%i]y2[%i]\n\n", (*bio)->x2, (*bio)->y2);
 }
 void	draw_right(t_fdf size, t_bio *bio, t_values **values)
 {
@@ -41,19 +41,19 @@ void	draw_right(t_fdf size, t_bio *bio, t_values **values)
 	while (i < size.height)
 	{
 		j = 0;
-		while (j < size.width)
+		while (j < size.width && (i + 1) <= size.height)
 		{
-			ft_values(size, &bio, i, j);
-			if(bio->run == 0 && (j + 1) < size.height)
-				slope_flat(size, &bio);
+			ft_values(&bio, i, j);
+			if(bio->run == 0)
+				slope_flat(&bio);
 			else
 			{
 				bio->slope = bio->rise/bio->run;
 				(*values)->adjust = bio->slope >=0 ? 1 : -1;
 				if(bio->slope <= 1 && bio->slope >= -1)
-					slope_slow(size, &bio, *values);
+					slope_slow(&bio, *values);
 				else
-					slope_fast(size, &bio, *values);
+					slope_fast(&bio, *values);
 			}
 			j++;
 		}
@@ -70,19 +70,19 @@ void	draw_down(t_fdf size, t_bio *bio, t_values **values)
 	while (i < size.height)
 	{
 		j = 0;
-		while (j < size.width)
+		while (j < size.width && (i + 1) < size.height)
 		{
-			ft_values(size, &bio, i, j);
-			if(bio->run == 0 && (i + 1) < size.height)
-				slope_flat(size, &bio);
+			ft_values(&bio, i, j);
+			if(bio->run == 0)
+				slope_flat(&bio);
 			else
 			{
 				bio->slope = bio->rise/bio->run;
 				(*values)->adjust = bio->slope >=0 ? 1 : -1;
-				if(bio->slope <= 1 && bio->slope >= -1)
-					slope_slow(size, &bio, *values);
+				if (bio->slope <= 1 && bio->slope >= -1)
+					slope_slow(&bio, *values);
 				else
-					slope_fast(size, &bio, *values);
+					slope_fast(&bio, *values);
 			}
 			j++;
 		}
@@ -91,7 +91,6 @@ void	draw_down(t_fdf size, t_bio *bio, t_values **values)
 }
 void	draw_pieces(t_bio *bio, t_fdf size)
 {
-	float tmp;
 	t_values	*values;
 
 	values = (t_values *)malloc(sizeof(t_values));
@@ -102,5 +101,5 @@ void	draw_pieces(t_bio *bio, t_fdf size)
 	draw_right(size, bio, &values);
 	draw_down(size, bio, &values);
 	//mlx_key_hook(bio->window, my_key_function, mlx);
-	//mlx_loop(bio->mlx);
+	mlx_loop(bio->mlx);
 }

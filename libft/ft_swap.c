@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/01 18:29:29 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 19:59:32 by rramirez         ###   ########.fr       */
+/*   Created: 2016/11/15 11:56:15 by rramirez          #+#    #+#             */
+/*   Updated: 2017/06/25 15:35:15 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_int_swap(int a, int b)
 {
-	//void		*mlx;
-	//void		*window;
-	t_bio  		*bio;
-	t_fdf		*size;
+	int c;
 
-	if (!(size = (t_fdf *)malloc(sizeof(t_fdf))))
-		ft_error_msg("Malloc Error");
-	size->zmax = 0;
-	size->zmin = 0;
-	file_check(size, argc, argv);
-	save_file(argv, size);
-	bio = make_env(*size);
-	draw_pieces(bio, *size);
-	return (0);
+	c = a;
+	a = b;
+	b = c;
 }
