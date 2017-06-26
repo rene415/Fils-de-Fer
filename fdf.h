@@ -44,6 +44,8 @@ typedef	struct		s_cartp
 typedef struct		s_bio
 {
 	int		k;
+	int		cur_z;
+	int		next_z;
 	int		x1;
 	int		x2;
 	int		y1;
@@ -88,4 +90,8 @@ void			draw_down(t_fdf size, t_bio *bio, t_values **values);
 void			slope_slow(t_bio **bio, t_values *values);
 void			slope_fast(t_bio **bio, t_values *values);
 void			slope_flat(t_bio **bio);
+void			rotation(t_bio *bio,t_fdf size);
+void			x_rot(t_bio **bio,t_fdf size);
+void			y_rot(t_bio **bio,t_fdf size);
+void			z_rot(t_bio **bio,t_fdf size);
 #endif

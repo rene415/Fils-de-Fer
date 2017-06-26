@@ -32,19 +32,20 @@ t_cartp		**ft_make_cart(t_bio **bio, t_fdf size)
 		{
 			cart[i][j].x = (j - (*bio)->midx) * (*bio)->gap;
 			cart[i][j].y = (i - (*bio)->midy) * (*bio)->gap;
-			//cart[i][j].z = 8 * size.map[i][j];
+			//cart[i][j].z = size.map[i][j] * 8;
+			cart[i][j].z = size.map[i][j];
 			j++;
 		}
 		i++;
 	}
 	cart[i] = NULL;
-	// printf("x/width = %d, y/height = %d\n", size.width, size.height);
-	// printf("midx = %d, midy = %d\n", (*bio)->midx, (*bio)->midy);
-	// printf("(0,0) = (%f, %f)\n", cart[0][0].y, cart[0][0].x);
-	// printf("(0,1) = (%f, %f)\n", cart[0][1].y, cart[0][1].x);
-	// printf("(1,0) = (%f, %f)\n", cart[1][0].y, cart[1][0].x);
-	// printf("(%d,%d) = (%f, %f)\n", (*bio)->midy, (*bio)->midx, cart[(*bio)->midy][(*bio)->midx].y, cart[(*bio)->midy][(*bio)->midx].x);
-	// printf("(9,14) = (%f, %f)\n", cart[9][14].y, cart[9][14].x);
+	printf("x/width = %d, y/height = %d\n", size.width, size.height);
+	printf("midx = %d, midy = %d\n", (*bio)->midx, (*bio)->midy);
+	printf("(0,0) = (%f, %f)\n", cart[0][0].y, cart[0][0].x);
+	printf("(0,1) = (%f, %f)\n", cart[0][1].y, cart[0][1].x);
+	printf("(1,0) = (%f, %f)\n", cart[1][0].y, cart[1][0].x);
+	printf("(%d,%d) = (%f, %f)\n", (*bio)->midy, (*bio)->midx, cart[(*bio)->midy][(*bio)->midx].y, cart[(*bio)->midy][(*bio)->midx].x);
+	printf("(9,14) = (%f, %f)\n", cart[9][14].y, cart[9][14].x);
 	return (cart);
 }
 
@@ -53,7 +54,7 @@ t_bio	*make_env(t_fdf size)
 	t_bio  *bio;
 	
 	if (!(bio = (t_bio *)malloc(sizeof(t_bio))))
-			exit (0);
+			ft_error_msg("Error: Malloc Failed\n");
 	bio->k = 0;
 	bio->x1 = 0;
 	bio->x2 = 0;

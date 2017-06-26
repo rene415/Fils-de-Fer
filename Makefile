@@ -21,6 +21,7 @@ SRCS	= 	main.c\
 			translate.c\
 			make_slope.c\
 			file_check.c\
+			ft_rotation.c\
 
 OBJ 	=	${SRCS:.c=.o}
 

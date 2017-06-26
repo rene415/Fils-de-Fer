@@ -89,6 +89,7 @@ size_t				ft_word_count(const char *s, char c);
 int					ft_spaces(int str);
 void				ft_int_swap(int a, int b);
 void				ft_error_msg(char *str);
+int					ft_size_x(char **str);
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

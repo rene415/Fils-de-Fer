@@ -69,7 +69,7 @@ void		save_file(char **argv, t_fdf *size)
 	i = 0;
 	y = 0;
 	if ((fd = open(argv[1], O_RDONLY)) == -1)
-		ft_error_msg("Error: Unable To Open File");
+		ft_error_msg("Error: Unable To Open File\n");
    	while (get_next_line(fd, &line))
 	{
 		y++;

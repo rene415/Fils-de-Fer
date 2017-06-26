@@ -31,7 +31,7 @@ SRC = ./ft_atoi.c ./ft_bzero.c ./ft_isalnum.c ./ft_isascii.c ./ft_isdigit.c\
    	./ft_strrchr.c ./ft_strsplit.c ./ft_strstr.c ./ft_strsub.c ./ft_strtrim.c\
    	./ft_tolower.c ./ft_toupper.c ./ft_word_count.c ./ft_spaces.c\
 	./ft_int_len.c ./ft_letters.c ./get_next_line.c ./ft_swap.c\
-	./ft_error_msg.c\
+	./ft_error_msg.c ./ft_size_x.c\
 	
 OS = $(SRC:.c=.o) 
 

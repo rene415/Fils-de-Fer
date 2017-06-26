@@ -16,15 +16,18 @@ void	ft_values(t_bio **bio, int i, int j)
 {
 	(*bio)->x1 = round((*bio)->cart[i][j].x);
 	(*bio)->y1 = round((*bio)->cart[i][j].y);
+	(*bio)->cur_z = (*bio)->cart[i][j].z;
 	if((*bio)->k == 1)
 	{
 		(*bio)->x2 = round((*bio)->cart[i][j + 1].x);
 		(*bio)->y2 = round((*bio)->cart[i][j + 1].y);
+		(*bio)->next_z = (*bio)->cart[i][j + 1].z;
 	}
 	else
 	{
 		(*bio)->x2 = round((*bio)->cart[i + 1][j].x);
 		(*bio)->y2 = round((*bio)->cart[i + 1][j].y);
+		(*bio)->next_z = (*bio)->cart[i + 1][j].z;
 	}
 	(*bio)->rise = ((*bio)->y2) - ((*bio)->y1);
 	(*bio)->run = ((*bio)->x2) - ((*bio)->x1);
@@ -93,10 +96,11 @@ void	draw_pieces(t_bio *bio, t_fdf size)
 {
 	t_values	*values;
 
-	values = (t_values *)malloc(sizeof(t_values));
+	if(!(values = (t_values *)malloc(sizeof(t_values))))
+		ft_error_msg("Error: Malloc Failed\n");
 	values->threshold = 0.5;
 	values->offset = 0;
-	//rotation();
+	//rotation(bio,size);
 	translate(&bio, size);
 	draw_right(size, bio, &values);
 	draw_down(size, bio, &values);
