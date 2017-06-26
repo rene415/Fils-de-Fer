@@ -26,20 +26,20 @@ void		file_check(t_fdf *size, int argc, char **argv)
 		if (!ft_strcmp(argv[i], "-w") && (i + 1) < argc)
 		{
 			size->win_x = ft_atoi(argv[i + 1]);
-			printf("-w reached[%i]\n", size->win_x);
+			//printf("-w reached[%i]\n", size->win_x);
 		}
 		else if (!ft_strcmp(argv[i], "-h") && (i + 1) < argc)
 		{
-			size->win_x = ft_atoi(argv[i + 1]);
-			printf("-h reached[%i]\n", size->win_y);
+			size->win_y = ft_atoi(argv[i + 1]);
+			//printf("-h reached[%i]\n", size->win_y);
 		}
 		else if(!ft_strcmp(argv[i], "--help\n"))
 		{
-			printf("No Help");
+			//printf("No Help");
 			ft_error_msg("usage: ./fdf FILE [-w width] [-h height]");
 		}
 		i++;
 	}
-	size->win_x = (size->win_x < 600 || size->win_x > 1400 ? 800 : size->win_x);
-	size->win_y = (size->win_y < 600 || size->win_y > 1000 ? 800 : size->win_y);
+	size->win_x = (size->win_x < 600 || size->win_x > 1400 ? 700 : size->win_x);
+	size->win_y = (size->win_y < 600 || size->win_y > 1200 ? 700 : size->win_y);
 }

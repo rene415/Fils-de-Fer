@@ -53,8 +53,8 @@ void	coordinates(int fd, char **argv, t_fdf **size)
 		free(line);
 		//printf("\n");
 		value_z(&(*size), x);
-		//printf("zmax is: %i\n", (*size)->zmax);
-		//printf("zmin is: %i\n\n", (*size)->zmin);
+		// printf("zmax is: %i\n", (*size)->zmax);
+		// printf("zmin is: %i\n\n", (*size)->zmin);
 		x++;
 	}
 }

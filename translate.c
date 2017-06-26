@@ -29,9 +29,11 @@ void	translate(t_bio **bio, t_fdf size)
 			y = (*bio)->cart[i][j].y;
 			(*bio)->cart[i][j].x = (x + ((*bio)->max/2));
 			(*bio)->cart[i][j].y = (y + ((*bio)->smax/2));
+			//printf("old x[%f][%f] -> [%f][%f]\n", x , y, (*bio)->cart[i][j].x, (*bio)->cart[i][j].y);
 			j++;
 		}
+		//printf("\n\n");
 		i++;
 	}	
-	printf("translation = [x = %f] [y = %f]\n", ((*bio)->max / 2), ((*bio)->max / 4));
+	printf("translation = [x = %f] [y = %f]\n", ((*bio)->max / 2), ((*bio)->smax / 2));
 }

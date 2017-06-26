@@ -20,7 +20,7 @@
 # include <math.h>
 #include "minilibx/mlx.h"
 #include "libft/libft.h"
-#define	RED 0x000000ff
+#define	RED 0x00FF33FF
 #define WHITE 0x00ffffff
 #define ESC 53
 
@@ -43,18 +43,18 @@ typedef	struct		s_cartp
 
 typedef struct		s_bio
 {
-	int		k;
-	int		cur_z;
-	int		next_z;
-	int		x1;
-	int		x2;
-	int		y1;
-	int		y2;
+	int		right;
+	float		cur_z;
+	float		next_z;
+	float		x1;
+	float		x2;
+	float		y1;
+	float		y2;
 	int		gap;
 	int		big;
-	int 		rise;
-	int		run;
-	int		slope;
+	float 		rise;
+	float		run;
+	float		slope;
 	float		max;
 	float		smax;
 	void		*mlx;
@@ -84,12 +84,13 @@ t_bio			*make_env(t_fdf size);
 t_cartp			**ft_make_cart(t_bio **bio, t_fdf size);
 void			draw_pieces(t_bio *bio, t_fdf size);
 void			translate(t_bio **bio, t_fdf size);
-void			ft_values(t_bio **bio, int i, int j);
+void			ft_dvalues(t_bio **bio, int i, int j, t_fdf size);
+void			ft_rvalues(t_bio **bio, int i, int j, t_fdf size);
 void			draw_right(t_fdf size, t_bio *bio, t_values **values);
 void			draw_down(t_fdf size, t_bio *bio, t_values **values);
-void			slope_slow(t_bio **bio, t_values *values);
-void			slope_fast(t_bio **bio, t_values *values);
-void			slope_flat(t_bio **bio);
+void			slope_slow(t_bio *bio, t_values *values);
+void			slope_fast(t_bio *bio, t_values *values);
+void			slope_flat(t_bio *bio);
 void			rotation(t_bio *bio,t_fdf size);
 void			x_rot(t_bio **bio,t_fdf size);
 void			y_rot(t_bio **bio,t_fdf size);

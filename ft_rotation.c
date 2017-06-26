@@ -28,7 +28,7 @@ void		x_rot(t_bio **bio,t_fdf size)
 			y = (*bio)->cart[i][j].y;
 			z = (*bio)->cart[i][j].z;
 			(*bio)->cart[i][j].y = (y * cos(0.6982) - z * sin(0.6982));
-			(*bio)->cart[i][j].z = (y * sin(0.6982) - z * cos(0.6982));
+			(*bio)->cart[i][j].z = (y * sin(0.6982) + z * cos(0.6982));
 			j++;
 		}
 		i++;
@@ -50,14 +50,14 @@ void		y_rot(t_bio **bio,t_fdf size)
 			x = (*bio)->cart[i][j].x;
 			z = (*bio)->cart[i][j].z;
 			(*bio)->cart[i][j].x = (x * cos(0.0524) + z * sin(0.0524));
-			(*bio)->cart[i][j].z = (-(x * sin(0.0524) + z * cos(0.0524)));
+			(*bio)->cart[i][j].z = -(x * sin(0.0524)) + z * cos(0.0524);
 			j++;
 		}
 		i++;
 	}
 
 }
-void		z_rot(t_bio **bio,t_fdf size)
+void		z_rot(t_bio **bio, t_fdf size)
 {
 	float	x;
 	float	y;
@@ -72,17 +72,23 @@ void		z_rot(t_bio **bio,t_fdf size)
 		{
 			x = (*bio)->cart[i][j].x;
 			y = (*bio)->cart[i][j].y;
+			//printf("oldx: y[%f] -> ",y);
 			(*bio)->cart[i][j].x = (x * cos(0.7854) - y * sin(0.7854));
 			(*bio)->cart[i][j].y = (x * sin(0.7854) + y * cos(0.7854));
+			//printf("newx: y[%f]\n",(*bio)->cart[i][j].y);
 			j++;
 		}
 		i++;
 	}
+	
+	
 }
 
 void	rotation(t_bio *bio,t_fdf size)
 {
-	x_rot(&bio, size);
-	y_rot(&bio, size);
 	z_rot(&bio, size);
+	y_rot(&bio, size);
+	x_rot(&bio, size);
+	//printf("pixel1: x1[%i]y1[%i]\n", (*bio)->x1, (*bio)->y1);
+	//printf("pixel2: x2[%i]y2[%i]\n\n", (*bio)->x2, (*bio)->y2);
 }
