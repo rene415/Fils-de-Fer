@@ -31,8 +31,6 @@ void	ft_values(t_bio **bio, int i, int j, t_fdf size)
 	}
 	(*bio)->rise = ((*bio)->y2) - ((*bio)->y1);
 	(*bio)->run = ((*bio)->x2) - ((*bio)->x1);
-	//printf("right: x1[%i]y1[%i]\n", (*bio)->x1, (*bio)->y1);
-	//printf("right: x2[%i]y2[%i]\n\n", (*bio)->x2, (*bio)->y2);
 }
 void	draw_right(t_fdf size, t_bio *bio, t_values **values)
 {
@@ -52,7 +50,6 @@ void	draw_right(t_fdf size, t_bio *bio, t_values **values)
 			else
 			{
 				bio->slope = bio->rise/bio->run;
-				//printf(">>>>>>>>>>slope: [%f] = rise [%f] / run [%f]>>>>>>>>>>>>\n", bio->slope, bio->rise, bio->run);
 				(*values)->adjust = bio->slope >=0 ? 1 : -1;
 				(*values)->threshold = 0.5;
 				(*values)->offset = 0;
@@ -73,6 +70,8 @@ void	draw_down(t_fdf size, t_bio *bio, t_values **values)
 
 	i = 0;
 	bio->right = 0;
+	printf("height = %d\n", size.height);
+	printf("width = %d\n", size.width);
 	while (i < size.height)
 	{
 		j = 0;
@@ -81,26 +80,18 @@ void	draw_down(t_fdf size, t_bio *bio, t_values **values)
 			ft_values(&bio, i, j, size);
 			if(bio->run == 0)
 			{
-				printf("inside slope straight\n");
 				slope_flat(bio);
 			}
 			else
 			{
 				bio->slope = bio->rise/bio->run;
-				//printf("____Draw down = slope: [%f] = rise [%f] / run [%f]_________\n", bio->slope, bio->rise, bio->run);
 				(*values)->adjust = bio->slope >= 0 ? 1 : -1;
 				(*values)->threshold = 0.5;
 				(*values)->offset = 0;
 				if (bio->slope <= 1 && bio->slope >= -1)
-				{
-					printf("inside slow slope x is; [%f]\n", bio->x1);
 					slope_slow(bio, *values);
-				}
 				else
-				{
-					printf("inside fast slope\n");
 					slope_fast(bio, *values);
-				}
 			}
 			j++;
 		}
@@ -117,6 +108,4 @@ void	draw_pieces(t_bio *bio, t_fdf size)
 	translate(&bio, size);
 	draw_right(size, bio, &values);
 	draw_down(size, bio, &values);
-	//mlx_key_hook(bio->window, my_key_function, mlx);
-	mlx_loop(bio->mlx);
 }

@@ -12,11 +12,18 @@
 
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+int				my_key_function(int keycode, void *mlx)
 {
-	//void		*mlx;
-	//void		*window;
-	t_bio  		*bio;
+	ft_putstr("Key event: ");
+	ft_putendl(ft_itoa(keycode));
+	if (keycode == 53)
+		exit(0);
+	return (0);
+}
+
+int				main(int argc, char **argv)
+{
+	t_bio		*bio;
 	t_fdf		*size;
 
 	if (!(size = (t_fdf *)malloc(sizeof(t_fdf))))
@@ -27,5 +34,7 @@ int	main(int argc, char **argv)
 	save_file(argv, size);
 	bio = make_env(*size);
 	draw_pieces(bio, *size);
+	mlx_key_hook(bio->window, my_key_function, 0);
+	mlx_loop(bio->mlx);
 	return (0);
 }
