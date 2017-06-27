@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 15:02:09 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/06 10:05:46 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/26 20:11:51 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <ctype.h>
-//# include "get_next_line.h"
 
 # define BUFF_SIZE		100
 
@@ -28,7 +27,6 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-/* libft*/
 int					ft_atoi(const char *str);
 void				ft_bzero(void *str, size_t n);
 int					ft_isalnum(int c);
@@ -82,7 +80,6 @@ char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-/* bonus*/
 size_t				ft_letters(char const *s, char c);
 size_t				ft_int_len(int n);
 size_t				ft_word_count(const char *s, char c);
@@ -98,9 +95,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-/* get next line*/
 int					get_next_line(const int fd, char **line);
-int 				get_next_line(const int	fd, char **line);
 char				*buff_read(char *buff_store, int fd);
 int					ft_len(char *buff_store, char c);
 int					store_to_line(char **buff_store, char **line);

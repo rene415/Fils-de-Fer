@@ -6,21 +6,21 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 18:24:37 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/25 18:28:01 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/26 19:40:45 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void		x_rot(t_bio **bio,t_fdf size)
+void			x_rot(t_bio **bio, t_fdf size)
 {
-	float	y;
-	float	z;
-	int		i;
-	int 	j;
+	float		y;
+	float		z;
+	int			i;
+	int			j;
 
 	i = 0;
-	while(i < size.height)
+	while (i < size.height)
 	{
 		j = 0;
 		while (j < size.width)
@@ -34,15 +34,16 @@ void		x_rot(t_bio **bio,t_fdf size)
 		i++;
 	}
 }
-void		y_rot(t_bio **bio,t_fdf size)
+
+void			y_rot(t_bio **bio, t_fdf size)
 {
-	float	x;
-	float	z;
-	int 	i;
-	int 	j;
+	float		x;
+	float		z;
+	int			i;
+	int			j;
 
 	i = 0;
-	while(i < size.height)
+	while (i < size.height)
 	{
 		j = 0;
 		while (j < size.width)
@@ -56,15 +57,16 @@ void		y_rot(t_bio **bio,t_fdf size)
 		i++;
 	}
 }
-void		z_rot(t_bio **bio, t_fdf size)
+
+void			z_rot(t_bio **bio, t_fdf size)
 {
-	float	x;
-	float	y;
-	int 	i;
-	int 	j;
+	float		x;
+	float		y;
+	int			i;
+	int			j;
 
 	i = 0;
-	while(i < size.height)
+	while (i < size.height)
 	{
 		j = 0;
 		while (j < size.width)
@@ -76,12 +78,12 @@ void		z_rot(t_bio **bio, t_fdf size)
 			j++;
 		}
 		i++;
-	}	
+	}
 }
 
-void	rotation(t_bio *bio,t_fdf size)
+void			rotation(t_bio *bio, t_fdf size)
 {
 	z_rot(&bio, size);
-	//y_rot(&bio, size);
+	y_rot(&bio, size);
 	x_rot(&bio, size);
 }

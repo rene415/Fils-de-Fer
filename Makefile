@@ -6,7 +6,7 @@
 #    By: rramirez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/04/28 01:09:45 by rramirez          #+#    #+#              #
-#    Updated: 2017/06/24 08:47:00 by rramirez         ###   ########.fr        #
+#    Updated: 2017/06/26 21:21:06 by rramirez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ SRCS	= 	main.c\
 
 OBJ 	=	${SRCS:.c=.o}
 
-INCLUDE = -I fdf.h -I minilibx
+INCLUDE = -I fdf.h
 
-LIBS = -L libft/ -lft -L minilibx -lmlx -framework OpenGL -framework AppKit
+LIBS = -L libft/ -lft -L minilibx/ -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
@@ -35,15 +35,18 @@ $(OBJ):
 	@$(CC) $(INCLUDE) -c $(SRCS) -g
 
 $(NAME): $(OBJ)
-	@make all -C libft
+	@make -C libft all
+	@make -C minilibx
 	@$(CC) $(OBJ) $(LIBS) -o $(NAME)
 
 clean:
-	@make clean -C libft
+	@make -C libft clean
+	@make -C minilibx clean
 	@/bin/rm -f $(OBJ)
 
 fclean: clean
-	@make fclean -C libft
+	@make -C libft fclean
+	@make -C minilibx clean
 	@/bin/rm -f $(NAME)
 
 re: fclean all

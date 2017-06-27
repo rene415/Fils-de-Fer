@@ -6,14 +6,14 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/25 15:34:33 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/25 15:34:45 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/26 20:13:19 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include  "libft.h"
+#include "libft.h"
 
 void	ft_error_msg(char *str)
 {
-		ft_putendl(str);
-		exit (0);	
+	ft_putendl(str);
+	exit(0);
 }

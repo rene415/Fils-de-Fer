@@ -6,7 +6,7 @@
 /*   By: rramirez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/23 10:27:23 by rramirez          #+#    #+#             */
-/*   Updated: 2017/06/23 18:33:31 by rramirez         ###   ########.fr       */
+/*   Updated: 2017/06/26 19:25:00 by rramirez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_cartp		**ft_make_cart(t_bio **bio, t_fdf size)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	t_cartp	**cart;
 
-	(*bio)->midx = size.width/2;
-	(*bio)->midy = size.height/2;
+	(*bio)->midx = size.width / 2;
+	(*bio)->midy = size.height / 2;
 	cart = (t_cartp **)malloc(sizeof(t_cartp *) * (size.height + 1));
 	i = 0;
 	while (i < size.height)
@@ -30,7 +30,7 @@ t_cartp		**ft_make_cart(t_bio **bio, t_fdf size)
 		{
 			cart[i][j].x = (j - (*bio)->midx) * (*bio)->gap;
 			cart[i][j].y = (i - (*bio)->midy) * (*bio)->gap;
-			cart[i][j].z = size.map[i][j] * 3.0;
+			cart[i][j].z = size.map[i][j];
 			j++;
 		}
 		i++;
@@ -39,18 +39,19 @@ t_cartp		**ft_make_cart(t_bio **bio, t_fdf size)
 	return (cart);
 }
 
-t_bio	*make_env(t_fdf size)
+t_bio		*make_env(t_fdf size)
 {
-	t_bio  *bio;
-	
+	t_bio	*bio;
+
 	if (!(bio = (t_bio *)malloc(sizeof(t_bio))))
-			ft_error_msg("Error: Malloc Failed\n");
+		ft_error_msg("Error: Malloc Failed\n");
 	bio->right = 0;
 	bio->x1 = 0;
 	bio->x2 = 0;
 	bio->y1 = 0;
 	bio->y2 = 0;
-	bio->gap = size.width > size.height ? size.win_x/(size.width) : size.win_y/(size.height);
+	bio->gap = size.width > size.height ?
+		size.win_x / (size.width) : size.win_y / (size.height);
 	bio->big = size.width > size.height ? size.width : size.height;
 	bio->rise = 0;
 	bio->run = 0;
